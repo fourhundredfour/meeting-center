@@ -1,0 +1,9 @@
+localhost meeting-center.local {
+    encode gzip zstd
+    reverse_proxy * app:3000
+}
+
+mailhog.local {
+    encode gzip zstd
+    reverse_proxy * mailhog:8025
+}

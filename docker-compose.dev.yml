@@ -1,0 +1,30 @@
+version: "3"
+services:
+  app:
+    restart: always
+    entrypoint: |
+      yarn dev
+    volumes:
+      - .:/app
+    depends_on:
+      - mailhog
+    environment:
+      SMTP_USER: dev
+      SMTP_PASS: dev
+      SMTP_HOST: "mailhog:1025"
+      SMTP_SSL: "false"
+      MAIL_RECEIVER: meetingcenter@de-cix.net
+  proxy:
+    image: caddy:2-alpine
+    restart: always
+    ports:
+      - 9080:80
+      - 9443:443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    depends_on:
+      - app
+      - mailhog
+  mailhog:
+    image: mailhog/mailhog
+    restart: always

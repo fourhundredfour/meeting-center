@@ -1,0 +1,8 @@
+docker-compose.*
+Caddyfile
+Dockerfile
+node_modules
+/.svelte
+/build
+/functions
+Makefile
