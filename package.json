@@ -2,7 +2,7 @@
 	"name": "meeting-center",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "svelte-kit dev",
+		"dev": "yarn && svelte-kit dev",
 		"build": "svelte-kit build",
 		"start": "svelte-kit start"
 	},
